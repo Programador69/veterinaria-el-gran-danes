@@ -1,0 +1,624 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #4fc3f7;    /* Azul claro */
+            --secondary: #333333;  /* Negro/Gris oscuro */
+            --accent: #fff9c4;     /* Amarillo suave */
+            --light: #ffffff;      /* Blanco */
+            --text: #212121;
+            --emergency: #ff5252;  /* Rojo para urgencias */
+        }
+
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--light);
+            /* width: 100vw;
+            overflow-x: hidden; */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* --- Botón Flotante de Urgencias --- */
+        .btn-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--emergency);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Header Styles */
+        header {
+            /* background: linear-gradient(to right, #68a1b5, #000000); */
+            background: linear-gradient(to right, #8fdafd, #000);
+            color: var(--light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0;
+        }
+
+        .celular {
+            display: none;
+        }
+
+        .header-container {
+            width: 90vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .logo {
+            background: linear-gradient(to right, #92def7, #3571a7, #72b4d6);
+            width: max(300px, 40%);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* 2. La Máscara SVG de la curva "S" */
+            /* Esta máscara define que la mayor parte del banner es sólida (visible),
+                excepto la esquina derecha, que se corta con una curva suave. */
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 h100 c0,0 -5.02,6.59 -4.9,25.43 c0.12,18.84 4.9,35.43 4.9,50 c0,14.57 -4.9,24.57 -4.9,24.57 h-100 Z' fill='black'/%3E%3C/svg%3E");
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 h100 c0,0 -5.02,6.59 -4.9,25.43 c0.12,18.84 4.9,35.43 4.9,50 c0,14.57 -4.9,24.57 -4.9,24.57 h-100 Z' fill='black'/%3E%3C/svg%3E");
+
+            /* 3. Asegurar que la máscara se estire correctamente */
+            -webkit-mask-size: 100% 100%;
+            mask-size: 100% 100%;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            padding: 10px 0 10px 50px;
+        }
+
+        .logo div {
+            width: 70%;
+        }
+
+        h1, .logo div span {
+            display: block;
+            font-size: 1.6rem;
+            text-align: center;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        nav {
+            width: 55%;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #ebf6ff 35%, transparent), 
+            url('/img/granDanes25.jpg');
+            background-size: cover;
+            background-position: top left;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #000;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .bandera-50-aniv {
+            position: absolute;
+            width: 200px;
+            top: 0;
+            left: 20px;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            width: 45%;
+        }
+
+        .hero p, .hero a {
+            display: block;
+            width: 45%;
+            border-radius: 20px;
+        }
+
+        .btn-main {
+            background-color: var(--primary);
+            color: var(--secondary);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            transition: transform 1s;
+        }
+
+        .btn-main:active {
+            background-color: var(--secondary);
+            color: var(--primary);
+            transform: scale(.5);
+        }
+
+        /* Section Global */
+        section {
+            padding: 4rem 0;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+        }
+
+        /* Nosotros */
+        #about > div > div:nth-child(2) > div:nth-child(1) > p {
+            line-height: 2;
+            text-wrap: pretty;
+            font-weight: 450;
+        }
+
+        #about > div > div:nth-child(2) > div:nth-child(1) > p {
+            text-wrap: pretty;
+        }
+
+        #about > div > div:nth-child(2) > div:nth-child(2) > img {
+            width: 100%;
+                border-radius: 10px;
+                aspect-ratio: 16/9;
+                object-fit: cover;
+                object-position: center;
+        }
+
+        /* Div del doctor */
+        .div-doctor {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            /* flex-direction: column; */
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .div-doctor h3, .div-doctor figure {
+            width: 100vw;
+        }
+
+        .carrusel {
+            width: 95vw;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            margin-left: 20px;
+        }
+
+        .carrusel::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        .carrusel::-webkit-scrollbar-thumb {
+            background: #3571a7;
+            border-radius: 10px;
+        }
+
+        .carrusel::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .div-doctor .carrusel img {
+            scroll-snap-align: center;
+            flex-shrink: 0;
+            margin-right: 10px;
+            border-radius: 10px;
+            transform-origin: center center;
+            transform: scale(1);
+            transition: transform 0.5s;
+            position: relative;
+            aspect-ratio: 1/1;
+            width: 300px;
+            height: 250px;
+            object-fit: cover;
+            object-position: left top;
+            border-radius: 15px;
+        }
+
+        .div-doctor p {
+            max-width: 800px;
+            align-self: center;
+            text-align: center;
+            text-wrap: pretty;
+            font-weight: 600;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: #fdedba;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        /* Timeline / Historia */
+        .timeline {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .timeline-texto {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 40%;
+        }
+
+        .timeline-img {
+            width: 50%;
+        }
+
+        .timeline-img img {
+            aspect-ratio: 16/9;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .timeline-img figcaption {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        /* galeria */
+        #galeria figure {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr) repeat(2, .5fr);
+            grid-template-rows: auto;
+            gap: 10px;
+        }
+
+        #galeria figure img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 3px;
+        }
+
+        #galeria figure img:nth-child(14) {
+            object-position: center;
+        }
+
+        #galeria figure img:last-child {
+            grid-column: 3/5;
+            object-position: center;
+        }
+
+        /* Contact Form */
+        #contact {
+            background-color: #fcf3d8;
+        }
+
+        #contact div h2 {
+            margin: 0;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: none;
+            field-sizing: content;
+        }
+
+        .contact-form button {
+            font-size: 1rem;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            font-size: 2.3rem;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .social-links a { margin: 0 10px; color: #000; transition: color 0.3s; }
+        .social-links a:hover { color: var(--primary); }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            font-weight: bold;
+        }
+
+        #btn-terms {
+            margin-top: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .list-terms {
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            list-style: none;
+            text-wrap: pretty;
+            max-width: 800px;
+        }
+
+        .list-terms li {
+            margin: 15px 0;
+        }
+
+        .oculto {
+            display: none;
+        }
+
+@media (max-width: 1501px) {
+    .bandera-50-aniv{
+        left: initial;
+        right: 0;
+    }
+}
+
+@media (max-width: 851px) {
+    .bandera-50-aniv{
+        left: 0;
+        right: initial;
+    }
+
+    .hero h2 {
+        font-size: 3rem;
+    }
+
+    .timeline-texto {
+        width: 100%;
+    }
+
+    .timeline-img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 769px) {
+    .celular {
+        display: initial;
+    }
+
+    .laptop { display: none; }
+
+    .header-container {
+        width: 100%;
+    }
+
+    .logo {
+        width: 70%;
+        height: 130px;
+    }
+
+    nav {
+        width: 20%;
+        text-align: center;
+    }
+
+    .celular span {
+        font-size: 2.7rem;
+    }
+
+    .lista-celular {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 40vh;
+        padding: 20px 0;
+        position: absolute;
+        width: 100vw;
+        top: 130px;
+        left: 0;
+        background-color: #162228;
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    .oculto {
+        display: none;
+    }
+
+    .hero h2, .hero p, .hero a {
+        width: 60%;
+    }
+
+    #about > div > div:nth-child(2) > div:nth-child(2) > img {
+        aspect-ratio: 1;
+    }
+
+    #galeria figure {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #galeria figure img:last-child {
+        grid-column: 1/4;
+    }
+
+}
+
+@media (max-width: 450px) {
+    .lista-celular {
+        height: 50vh;
+    }
+
+    p {
+        font-size: 1.1rem;
+    }
+
+    .logo {
+        width: 85%;
+        padding-left: 10px;
+    }
+
+    .logo div {
+        width: 100%;
+    }
+
+    .celular {
+        width: 15%;
+    }
+
+    .hero h2, .hero p, .hero a {
+        width: 100%;
+    }
+
+    .hero {
+        background: linear-gradient(to right, #ebf6ff 50%, transparent), url(/img/granDanes25.jpg);
+        background-position: top center;
+        background-size: cover;
+        height: 80vh;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero div {
+        margin-top: 100px;
+    }
+
+    #galeria figure {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #galeria figure img:last-child {
+        grid-column: 1/3;
+    }
+
+    .contact-form {
+        padding: 20px 0 0 0;
+        font-size: 1.2rem;
+    }
+
+    .contact-form input, .contact-form textarea, .contact-form button {
+        font-size: 1.2rem;
+    }
+
+}
+
+@media (max-width: 330px) {
+    .bandera-50-aniv {
+        width: 150px;
+    }
+
+    .hero {
+        height: 100vh;
+    }
+
+   .container {
+    padding: 0;
+   }
+
+   #galeria figure {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #galeria figure img {
+        object-position: center;
+    }
+
+    #galeria figure img:last-child {
+        grid-column: 1/2;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    #about > div > div:nth-child(2) > div:nth-child(2) > img {
+        width: 290px;
+    }
+
+}
